@@ -1,10 +1,11 @@
 services:
   # ----------------------------------------------------------------------------
-  # 1. FastAPI AI Service
+  # 1. FastAPI AI Service (Free Tier)
   # ----------------------------------------------------------------------------
   - type: web
     name: hackforge-ai-service
     runtime: python
+    plan: free
     rootDir: ai-service
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
@@ -17,11 +18,12 @@ services:
         sync: false
 
   # ----------------------------------------------------------------------------
-  # 2. Node.js Express Backend
+  # 2. Node.js Express Backend (Free Tier)
   # ----------------------------------------------------------------------------
   - type: web
     name: hackforge-backend
     runtime: node
+    plan: free
     rootDir: backend
     buildCommand: npm install
     startCommand: node server.js
@@ -43,11 +45,12 @@ services:
         value: "*"
 
   # ----------------------------------------------------------------------------
-  # 3. React Vite Frontend (Static Site)
+  # 3. React Vite Frontend (Static Site - Free)
   # ----------------------------------------------------------------------------
   - type: web
     name: hackforge-frontend
     runtime: static
+    plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
