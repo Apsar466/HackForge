@@ -45,12 +45,11 @@ services:
         value: "*"
 
   # ----------------------------------------------------------------------------
-  # 3. React Vite Frontend (Static Site - Free)
+  # 3. React Vite Frontend (Static Site - Always Free)
   # ----------------------------------------------------------------------------
   - type: web
     name: hackforge-frontend
     runtime: static
-    plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
