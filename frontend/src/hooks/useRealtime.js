@@ -15,7 +15,10 @@ export function useRealtime(eventHandlers = {}) {
   }, [eventHandlers])
 
   useEffect(() => {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || ''
+    let apiBase = import.meta.env.VITE_API_BASE_URL || ''
+    if (apiBase && !apiBase.startsWith('http://') && !apiBase.startsWith('https://')) {
+      apiBase = `https://${apiBase}.onrender.com`
+    }
     const streamUrl = `${apiBase}/api/realtime/stream`
     let eventSource = null
 
